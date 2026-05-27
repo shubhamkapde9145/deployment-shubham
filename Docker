@@ -1,14 +1,5 @@
-# Use base image
-FROM ubuntu:22.04
+FROM ubuntu
 
-# Set environment variable
-ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install apache2 -y
 
-# Install packages
-RUN apt update && apt install -y nginx
-
-# Expose port
-EXPOSE 80
-
-# Start service
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["apachectl", "-D", "FOREGROUND"]
