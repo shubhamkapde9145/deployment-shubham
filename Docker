@@ -1,0 +1,14 @@
+# Use base image
+FROM ubuntu:22.04
+
+# Set environment variable
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install packages
+RUN apt update && apt install -y nginx
+
+# Expose port
+EXPOSE 80
+
+# Start service
+CMD ["nginx", "-g", "daemon off;"]
